@@ -1,0 +1,119 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: 'Roboto', sans-serif; /* Formal font from Google */
+  background-color: #FFFFFF; /* White background */
+  color: #000000; /* Black text color */
+}
+
+/* Container styles */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container img{
+  max-width: 100%;
+  height: auto;
+}
+
+/* Heading styles */
+h1 {
+  color: #FF474C; /* Red heading color */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h5 {
+  color: #FF474C; /* Red heading color */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #FF474C; /* Red label color */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #FF474C; /* Red border */
+  border-radius: 5px;
+}
+
+input[type="button"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #FF474C; /* Red button background */
+  color: #FFFFFF; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background-color: #FF3336; /* Darker red on hover */
+}
+
+/* Output section styles */
+.output {
+  background-color: #FFFAF0; /* Light orange background */
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+th,
+td {
+  padding: 10px;
+  border-bottom: 1px solid #000000; /* Black border */
+}
+
+th {
+  text-align: left;
+}
+
+/* Image section styles */
+/* Add your image styles here */
+
+/* Mobile responsiveness */
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select {
+    margin-bottom: 10px;
+  }
+
+  input[type="button"] {
+    margin-top: 10px;
+  }
+}
+
+

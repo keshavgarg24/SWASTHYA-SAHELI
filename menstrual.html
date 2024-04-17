@@ -1,0 +1,125 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Swasthya Saheli</title>
+	<link rel="stylesheet" href="assets/css/menstrual.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+
+</head>
+<body>
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>tracker</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <!-- Form fields -->
+      </form>
+      
+      <!-- Output section -->
+      <div class="output">
+        <!-- Output table -->
+      </div>
+  
+      <!-- Image section -->
+      
+    </div>
+  </body>
+  </html>
+
+
+
+    <!DOCTYPE html>
+    <html>
+      <head></head>
+      <body>
+        <div class="container">
+		<h1>TRACK YOUR MENSTRUAL CYCLE</h1>
+		<H5>Get information about your mentrual cycle by answering few questions</H5>
+		<img src='assets/images/wellbeing.jpeg' alt="Menstrual Cycle Image">
+		<form>
+			<label for="name" style="color: #000000">Name:</label>
+			<input type="text" id="name" name="name" required>
+
+			<label for="age" style="color: #000000">Age:</label>
+			<input type="number" id="age" name="age" required>
+
+			<label for="lastPeriod" style="color: #000000">Last Period:</label>
+			<input type="date" id="lastPeriod" name="lastPeriod" required>
+
+			<label for="cycleLength" style="color: #000000">Regular Periods: Cycle Length (in days):</label>
+			<input type="number" id="cycleLength" name="cycleLength" required>
+
+			<label for="periodLength" style="color: #000000">Period Length (in days):</label>
+			<input type="number" id="periodLength" name="periodLength" required>
+
+			<label for="bloodFlow" style="color: #000000">Blood Flow:</label>
+			<select id="bloodFlow" name="bloodFlow" required>
+				<option value="">Select an option</option>
+				<option value="high">High</option>
+				<option value="medium">Medium</option>
+				<option value="low">Low</option>
+			</select>
+
+			<label for="healthyDiet" style="color: #000000">Have you taken a healthy diet?:</label>
+			<select id="healthyDiet" name="healthyDiet" required>
+				<option value="">Select an option</option>
+				<option value="yes">Yes</option>
+				<option value="no">No</option>
+			</select>
+
+			<label for="exercise" style="color: #000000">Have you done exercise?:</label>
+			<select id="exercise" name="exercise" required>
+				<option value="">Select an option</option>
+				<option value="yes">Yes</option>
+				<option value="no">No</option>
+			</select>
+
+			<label for="hotWater" style="color: #000000">Have you drunk hot water?:</label>
+			<select id="hotWater" name="hotWater" required>
+				<option value="">Select an option</option>
+				<option value="yes">Yes</option>
+				<option value="no">No</option>
+			</select>
+
+			<input type="button" value="Submit" onclick="calculatePeriod()">
+
+		</form>
+
+		<div class="output">
+			<h2>Period Information</h2>
+			<table>
+				<tr>
+					<th>Next Period Date:</th>
+					<td id="nextPeriodDate"></td>
+				</tr>
+				<tr>
+					<th>Period Health:</th>
+					<td id="periodHealth"></td>
+				</tr>
+				<tr>
+					<th>Most Active Cramp Time:</th>
+					<td id="crampTime"></td>
+				</tr>
+				<tr>
+					<th>Ovulation Date:</th>
+					<td id="ovulationDate"></td>
+                </tr>
+                </table>
+                </div>
+                <script src="assets/js/menstrual.js"></script>                
+  </body>
+  </html>
+
+      
+
+       

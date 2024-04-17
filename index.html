@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swasthya Saheli : your companion</title>
+        <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <title>Swasthya Saheli</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- custom css -->
+        <link rel = "stylesheet" href = "assets/css/main.css" />
+        <link rel = "stylesheet" href = "assets/css/utilities.css" />
+        <!-- normalize.css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts Link For Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <style>/* Import Google font - Poppins */
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background: #E3F2FD;
+      }
+      .chatbot-toggler {
+        position: fixed;
+        bottom: 30px;
+        right: 35px;
+        outline: none;
+        border: none;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #ff999c;
+        transition: all 0.2s ease;
+      }
+      body.show-chatbot .chatbot-toggler {
+        transform: rotate(90deg);
+      }
+      .chatbot-toggler span {
+        color: #fff;
+        position: absolute;
+      }
+      .chatbot-toggler span:last-child,
+      body.show-chatbot .chatbot-toggler span:first-child  {
+        opacity: 0;
+      }
+      body.show-chatbot .chatbot-toggler span:last-child {
+        opacity: 1;
+      }
+      .chatbot {
+        position: fixed;
+        right: 35px;
+        bottom: 90px;
+        width: 420px;
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.5);
+        transform-origin: bottom right;
+        box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+                    0 32px 64px -48px rgba(0,0,0,0.5);
+        transition: all 0.1s ease;
+      }
+      body.show-chatbot .chatbot {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+      }
+      .chatbot header {
+        padding: 16px 0;
+        position: relative;
+        text-align: center;
+        color: #fff;
+        background: #ff474c;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      .chatbot header span {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        display: none;
+        cursor: pointer;
+        transform: translateY(-50%);
+      }
+      header h2 {
+        font-size: 1.4rem;
+      }
+      .chatbot .chatbox {
+        overflow-y: auto;
+        height: 510px;
+        padding: 30px 20px 100px;
+      }
+      .chatbot :where(.chatbox, textarea)::-webkit-scrollbar {
+        width: 6px;
+      }
+      .chatbot :where(.chatbox, textarea)::-webkit-scrollbar-track {
+        background: #fff;
+        border-radius: 25px;
+      }
+      .chatbot :where(.chatbox, textarea)::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 25px;
+      }
+      .chatbox .chat {
+        display: flex;
+        list-style: none;
+      }
+      .chatbox .outgoing {
+        margin: 20px 0;
+        justify-content: flex-end;
+      }
+      .chatbox .incoming span {
+        width: 32px;
+        height: 32px;
+        color: #fff;
+        cursor: default;
+        text-align: center;
+        line-height: 32px;
+        align-self: flex-end;
+        background: #ff474c;
+        border-radius: 4px;
+        margin: 0 10px 7px 0;
+      }
+      .chatbox .chat p {
+        white-space: pre-wrap;
+        padding: 12px 16px;
+        border-radius: 10px 10px 0 10px;
+        max-width: 75%;
+        color: #fff;
+        font-size: 0.95rem;
+        background: #ff474c;
+      }
+      .chatbox .incoming p {
+        border-radius: 10px 10px 10px 0;
+      }
+      .chatbox .chat p.error {
+        color: #721c24;
+        background: #f8d7da;
+      }
+      .chatbox .incoming p {
+        color: #000;
+        background: #f2f2f2;
+      }
+      .chatbot .chat-input {
+        display: flex;
+        gap: 5px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: #fff;
+        padding: 3px 20px;
+        border-top: 1px solid #ddd;
+      }
+      .chat-input textarea {
+        height: 55px;
+        width: 100%;
+        border: none;
+        outline: none;
+        resize: none;
+        max-height: 180px;
+        padding: 15px 15px 15px 0;
+        font-size: 0.95rem;
+      }
+      .chat-input span {
+        align-self: flex-end;
+        color: #ff474c;
+        cursor: pointer;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        visibility: hidden;
+        font-size: 1.35rem;
+      }
+      .chat-input textarea:valid ~ span {
+        visibility: visible;
+      }
+      
+      @media (max-width: 490px) {
+        .chatbot-toggler {
+          right: 20px;
+          bottom: 20px;
+        }
+        .chatbot {
+          right: 0;
+          bottom: 0;
+          height: 100%;
+          border-radius: 0;
+          width: 100%;
+        }
+        .chatbot .chatbox {
+          height: 90%;
+          padding: 25px 15px 100px;
+        }
+        .chatbot .chat-input {
+          padding: 5px 15px;
+        }
+        .chatbot header span {
+          display: block;
+        }
+      }
+      
+      .popup-message {
+        position: fixed;
+        bottom: 100px; 
+        right: 20px;
+        background-color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        display: none; 
+        z-index: 999; 
+      }
+      
+      .chatbot-toggler span.material-symbols-rounded {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px; 
+        height: 32px;
+        overflow: hidden;
+        border-radius: 50%;
+      }
+      
+      .chatbot-toggler span.material-symbols-rounded img {
+        width: 100%; 
+        height: 100%;
+        object-fit: cover; 
+      }
+      </style>
+    
+    
+    </head>
+    <body>
+        
+        <div class="page-wrapper">
+            <!-- header -->
+            <header class = "header">
+                <nav class = "navbar">
+                    <div class="container">
+                        <div class="navbar-content d-flex justify-content-between align-items-center">
+                            <div class = "brand-and-toggler d-flex align-items-center justify-content-between">
+                                <a href = "#" class = "navbar-brand d-flex align-items-center">
+                                    <img src="assets/images/logo.png" alt="" style="max-width: 100px; height: auto;">
+
+                                    <span class="brand-text fw-7">Swasthya Saheli</span>
+                                </a>
+                                <button type = "button" class = "d-none navbar-show-btn">
+                                    <i class = "fas fa-bars"></i>
+                                </button>
+                            </div>
+
+                            <div class = "navbar-box">
+                                <button type = "button" class = "navbar-hide-btn">
+                                    <i class = "fas fa-times"></i>
+                                </button>
+
+                                <ul class = "navbar-nav d-flex align-items-center">
+                                    <li class = "nav-item">
+                                        <a href = "#" class = "nav-link text-white nav-active text-nowrap">Home</a>
+                                    </li>
+                                    <li class = "nav-item">
+                                        <a href = "#services" class = "nav-link text-white text-nowrap">services</a>
+                                    </li>
+                                    <li class = "nav-item">
+                                        <a href = "#therapy" class = "nav-link text-white text-nowrap">Therapy</a>
+                                    </li>
+                                    <li class = "nav-item">
+                                        <a href = "#article" class = "nav-link text-white text-nowrap">Articles</a>
+                                    </li>
+                                    <li class = "nav-item">
+                                        <a href = "http://www.ncw.nic.in/helplines" target="_blank" class = "nav-link text-white text-nowrap">Helpline</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="element-one">
+                    <img src = "assets/images/element-img-1.png" alt = "">
+                </div>
+                
+                <div class="banner">
+                    <div class="container">
+                        <div class="banner-content">
+                            <div class="banner-left">
+                                <div class="content-wrapper">
+                                    <h1 class="banner-title">WOMEN HEALTH</h1><h2>Not heard of much about it , right ?</h4>
+                                    <p class="text text-white">
+                                        Insufficient research in women's health leads to misdiagnoses and ineffective treatments, exacerbated by their underrepresentation in clinical trials. Prioritizing gender-specific research is crucial for accurate diagnoses and effective treatments, empowering women and fostering equity in healthcare.</p>
+                                    <a href = "https://www.theguardian.com/science/2023/nov/20/women-health-research-jill-biden-white-house#:~:text=Women%20are%20twice%20as%20likely,fails%20to%20examine%20women%20separately." class="btn btn-secondary" target="_blank">Read more</a>
+                                </div>
+                            </div>
+
+                            <div class = "banner-right d-flex align-items-center justify-content-end">
+                                <img src = "assets/images/banner.png" alt = "">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- end of header -->
+
+            <main>
+               
+                <section id="services" class="sc-services">
+                    <div class="services-shape">
+                        <img src="assets/images/curve-shape-1.png" alt="">
+                    </div>
+                    <div class="container">
+                        <div class="services-content">
+                            <div class="title-box text-center">
+                                <div class="content-wrapper">
+                                    <h3 class="title-box-name">What we do ?</h3>
+                                    <div class="title-separator mx-auto"></div>
+                                    <p class="text title-box-text">Welcome to "Swasthya Saheli" - your trusted virtual health companion! We're here to bridge the gap in women's healthcare with warmth and support. Think of us as your friendly guide, ready to help with early disease detection, provide educational resources, and offer preventive tips. Our personalized chatbot is like a caring friend, always there to listen and assist. Stay informed with the latest research articles and feel empowered to take charge of your health journey. Together, let's prioritize women's health and pave the way for a brighter, healthier future! Join us on this empowering journey and experience the difference "Swasthya Saheli" can make in your life.</p>
+                                </div>
+                            </div>
+                
+                            <div class="services-list">
+                                <div class="services-item">
+                                    <img src="assets/images/menstrual.png" alt="service icon">
+                                    <h5 class="item-title fw-7">Menstrual cycle predictor</h5>
+                                    <p class="text">Analyse your menstrual cycle and predict your future cycle</p>
+                                    <a href="menstrual.html" class="btn btn-secondary">Try</a>
+                                </div>
+                
+                                <div class="services-item">
+                                    <img src="assets/images/breast_cancer.png" alt="service icon">
+                                    <h5 class="item-title fw-7">Breast Cancer predictor</h5>
+                                    <p class="text">Analyse your tumor and predict if it is cancerous or non-cancerous</p>
+                                    <a href="https://swasthya-saheli-breast-cancer.streamlit.app" class="btn btn-secondary">Try</a>
+                                </div>
+                
+                                <div class="services-item">
+                                    <img src="assets/images/diabetes.png" alt="service icon">
+                                    <h5 class="item-title fw-7">Heart disease predictor</h5>
+                                    <p class="text">Analyse your heart's health and check it it is prone to diseases</p>
+                                    <a href="https://swasthya-saheli-heart-disease.streamlit.app" class="btn btn-secondary">Try</a>
+                                </div>
+                
+                                <div class="services-item">
+                                    <img src="assets/images/heart.png" alt="service icon">
+                                    <h5 class="item-title fw-7">Diabetes predictor</h5>
+                                    <p class="text">Predict if you are diabetic or not during your pregnancy</p>
+                                    <a href="https://swasthya-saheli-diabetes.streamlit.app" class="btn btn-secondary">Try</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+
+               
+
+                <section class="sc-grid sc-grid-two" id="therapy">
+                    <div class="container">
+                        <div class="grid-content d-grid align-items-center">
+                            <div class="grid-img">
+                                <img src="assets/images/therapy.jpeg" alt="Therapy Image">
+                            </div>
+                            <div class="grid-text">
+                                <div class="content-wrapper text-start">
+                                    <div class="title-box">
+                                        <h3 class="title-box-name">Empower Yourself</h3>
+                                        <div class="title-separator mx-auto"></div>
+                                    </div>
+                                    <p class="text title-box-text" id="therapeutic-text"></p>
+                                    <button type="button" class="btn btn-primary-outline" onclick="generateText()">A fact about YOU</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="sc-grid sc-grid-one">
+                    <div class="container">
+                        <div class="grid-content d-grid align-items-center">
+                            <iframe style="border-radius: 12px; width: 100%; max-width: auto; height: 500px;" src="https://open.spotify.com/embed/playlist/5JMKatFCig3jAuZnIlLkwn?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="sc-grid sc-grid-one">
+                    <div class="container">
+                      <div class="grid-content d-grid align-items-center">
+                        <div class="discord-widget">
+                          <iframe 
+                            src="https://discord.com/widget?id=1230242690709458974&theme=dark&width=350&height=500" 
+                            width="350" 
+                            height="500" 
+                            frameborder="0" 
+                            allowtransparency="true"
+                            sandbox="allow-saves-data allow-popups allow-scripts allow-same-origin allow-storage-access-by-user-script">
+                          </iframe>
+                        </div>
+                        <p class="join-text">Want to join the community? Click <a href="https://discord.gg/bPUZB3dR" class="join-btn">here</a></p>
+                      </div>
+                    </div>
+                  </section>
+                  
+                  
+                  <style>
+                    /* Mobile Responsiveness */
+                    @media only screen and (max-width: 768px) {
+                      .discord-widget iframe {
+                        width: 90%; /* Adjust width for smaller screens */
+                      }
+                    }
+                  
+                    .join-text {
+                    margin-top: 20px;
+                      text-align: center;
+                    }
+                  
+                    .join-btn {
+                      background-color: #ff474c; /* Primary button color */
+                      color: #fff; /* Text color */
+                      padding: 10px 20px; /* Padding around the text */
+                      border: none; /* Remove default button border */
+                      border-radius: 5px; /* Rounded corners */
+                      cursor: pointer; /* Indicate clickable behavior */
+                      transition: background-color 0.3s ease; /* Smooth color change on hover */
+                    }
+                  
+                    .join-btn:hover {
+                      background-color: #ff777c; /* Button color on hover */
+                    }
+                  </style>
+                   
+                        
+
+                <section class = "sc-articles" id="article">
+                    <div class = "articles-shape">
+                        <img src = "assets/images/curve-shape-2.png" alt = "">
+                    </div>
+                    <div class = "container">
+                        <div class = "articles-content">
+                            <div class = "articles-element">
+                                <img src = "assets/images/element-img-2.png" alt = "">
+                            </div>
+                            <div class = "title-box text-center">
+                                <div class = "content-wrapper">
+                                    <h3 class = "title-box-name">Read out our latest article</h3>
+                                    <div class = "title-separator mx-auto"></div>
+                                </div>
+                            </div>
+                            
+                            <div class = "articles-list d-flex flex-wrap justify-content-center">
+                                <article class = "articles-item">
+                                    <div class = "item-img">
+                                        <img src = "assets/images/pcod.jpeg" >
+                                    </div>
+                                    <div class = "item-body">
+                                        <div class = "item-title">PCOD and PCOS</div>
+                                        <p class = "text">Although PCOS and PCOD are two distinct conditions that have similar symptoms, the primary distinction between them is that PCOS refers to polycystic ovarian syndrome.  ...</p>
+                                        <a href = "#" class = "item-link text-blue d-flex align-items-baseline">
+                                            <a href="pcod.html" class="item-link">
+                                                <span class="item-link-text">Read more</span>
+                                              </a>
+                                              
+                                            
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <article class = "articles-item">
+                                    <div class = "item-img">
+                                        <img src = "assets/images/breast_early.jpeg" class="artcile-image">
+                                    </div>
+                                    <div class = "item-body">
+                                        <div class = "item-title">BREAST CANCER</div>
+                                        <p class = "text">A breast self-exam is an early detection tool that uses a combination of physical and visual examinations of the breasts to check for signs and symptoms of breast cancer ...</p>
+                                        <a href = "#" class = "item-link text-blue d-flex align-items-baseline">
+                                            <a href="breast_cancer.html" class="item-link">
+                                                <span class="item-link-text">Read more</span>
+                                              </a>
+                                            
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <article class = "articles-item">
+                                    <div class = "item-img">
+                                        <img src = "assets/images/cervical.avif">
+                                    </div>
+                                    <div class = "item-body">
+                                        <div class = "item-title"> CERVICAL CANCER</div>
+                                        <p class = "text">Cancer is a genetic disease—that is, it is caused by changes to genes that control the way our cells function, especially how they grow and divide.
+                                            ...</p>
+                                        <a href = "#" class = "item-link text-blue d-flex align-items-baseline">
+                                            <a href="cervical_cancer.html" class="item-link">
+                                                <span class="item-link-text">Read more</span>
+                                              </a>
+                                        </a>
+                                    </div>
+                                </article>
+
+                               
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class = "footer">
+                <div class = "container">
+                    <div class = "footer-content">
+                        <div class = "footer-list d-grid text-white">
+                            <div class = "footer-item">
+                                <a href = "#" class = "navbar-brand d-flex align-items-center">
+                                    <img src="assets/images/logo.png" alt="" style="max-width: 100px; height: auto;">
+                                    <span class = "brand-text fw-7">Swasthya Saheli</span>
+                                </a>
+                                <p class = "text-white">Empowering women's health. Get started today!</p>
+                                <p class = "text-white copyright-text">&copy; Swasthay saheli 2024. All rights reserved.</p>
+                            </div>
+
+                            <div class = "footer-item">
+                                <h3 class = "footer-item-title">Find Doctors</h3>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14021.61939436365!2d77.20169485045876!3d28.527548611551868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce1f427d4c5fb%3A0x582d47bbf4970bc1!2sMax%20Super%20Speciality%20Hospital%2C%20Saket%20(Max%20Saket)!5e0!3m2!1sen!2sin!4v1713385260201!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+
+                            <div class = "footer-item">
+                                <h3 class = "footer-item-title">Connect</h3>
+                                <ul class = "footer-links">
+                                    <a href="https://www.linkedin.com/in/keshav-garg-5ba250287/" style="display: inline-block; padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px; text-decoration: none; color: #4078c9; font-weight: bold; transition: background-color 0.3s ease; margin: 3px;">
+                                      
+                                        LinkedIn
+                                      </a>
+                                      
+
+                                      <a href="https://github.com/keshavgarg24" style="display: inline-block; padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px; text-decoration: none; color: #000; font-weight: bold; transition: background-color 0.3s ease; margin: 3px;">
+                                        
+                                       GitHub
+                                      </a>
+                                      
+                                      
+                                      
+                                </ul>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "footer-element-1">
+                    <img src = "assets/images/element-img-4.png" alt = "">
+                </div>
+                <div class = "footer-element-2">
+                    <img src = "assets/images/element-img-5.png" alt = "">
+                </div>
+            </footer>
+            <footer class="footer-final">
+                <p>&copy; 2024 Swasthya Saheli. All rights reserved.</p>
+            </footer>
+        </div>
+        
+
+
+
+
+
+
+
+        <!-- jquery cdn -->
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <!-- owl carousel -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- custom js -->
+        <script src = "assets/js/script.js"></script>
+
+
+        <script type="importmap">
+          {
+            "imports": {
+              "@google/generative-ai": "https://esm.run/@google/generative-ai"
+            }
+          }
+        </script>
+        <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+    
+        
+    const genAI = new GoogleGenerativeAI('AIzaSyDuy6a645Uzdmo8TblrMa-w97LHl8FAft8');
+    
+    const chatbotToggler = document.querySelector(".chatbot-toggler");
+    const closeBtn = document.querySelector(".close-btn");
+    const chatbox = document.querySelector(".chatbox");
+    const chatInput = document.querySelector(".chat-input textarea");
+    const sendChatBtn = document.querySelector(".chat-input span");
+    
+    let userMessage = null;
+    const inputInitHeight = chatInput.scrollHeight;
+    
+    async function runModel(prompt) {
+        const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+      
+    
+    
+    
+    
+        
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
+        return text;
+      }
+    
+    
+    const createChatLi = (message, className) => {
+        const chatLi = document.createElement("li");
+        chatLi.classList.add("chat", `${className}`);
+        let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined">smart_toy</span><p></p>`;
+        chatLi.innerHTML = chatContent;
+        chatLi.querySelector("p").textContent = message;
+        return chatLi;
+    }
+    
+    const generateResponse = async (chatElement, userMessage) => {
+        const messageElement = chatElement.querySelector("p");
+        try {
+            const answer = await runModel(userMessage);
+            messageElement.textContent = answer;
+        }catch(error) {
+            console.error("failed to generate response", error);
+            messageElement.textContent = "Sorry , something went wrong.";
+        }
+        chatbox.scrollTo(0, chatbox.scrollHeight);
+    }
+    
+    const handleChat = () => {
+        userMessage = chatInput.value.trim();
+        if(!userMessage) return;
+    
+        
+        chatInput.value = "";
+        chatInput.style.height = `${inputInitHeight}px`;
+    
+        
+        chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+        chatbox.scrollTo(0, chatbox.scrollHeight);
+    
+        setTimeout(() => {
+    
+            const incomingChatLi = createChatLi("typing...", "incoming");
+            chatbox.appendChild(incomingChatLi);
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+            generateResponse( incomingChatLi, userMessage);
+        }, 600);
+    }
+    
+    chatInput.addEventListener("input", () => {
+        
+        chatInput.style.height = `${inputInitHeight}px`;
+        chatInput.style.height = `${chatInput.scrollHeight}px`;
+    });
+    
+    chatInput.addEventListener("keydown", (e) => {
+        
+        if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+            e.preventDefault();
+            handleChat();
+        }
+    });
+    
+    sendChatBtn.addEventListener("click", handleChat);
+    closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
+    chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+    
+    
+    
+    
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var popupMessage = document.getElementById('popup-message');
+          popupMessage.style.display = 'block'; // 
+        }, 2000); 
+    
+        var chatbotToggle = document.querySelector('.chatbot-toggler');
+        chatbotToggle.addEventListener('click', function() {
+          var popupMessage = document.getElementById('popup-message');
+          popupMessage.style.display = 'none';
+        });
+      });
+    
+        </script>
+      </body>
+
+</html>
+
+
+<button class="chatbot-toggler">
+    <span class="material-symbols-rounded"><img src="assets/images/bot.png" alt="Chatbot Icon"></span>
+    <span class="material-symbols-outlined">close</span>
+  </button>
+  <div id="popup-message" class="popup-message">
+    <p>How can I help you?</p>
+  </div>    
+  <div class="chatbot">
+    <header>
+      <h2>DAISY</h2>
+      <h6>powered by gemini</h6>
+      <span class="close-btn material-symbols-outlined">close</span>
+    </header>
+    <ul class="chatbox">
+      <li class="chat incoming">
+        <span class="material-symbols-outlined">smart_toy</span>
+        <p>Hey there beautiful 🌸, I am Daisy<br>How can I assist you today?</p>
+      </li>
+    </ul>
+    <div class="chat-input">
+      <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+      <span id="send-btn" class="material-symbols-rounded">send</span>
+    </div>
+  </div>
+
+</body>
+</html>
